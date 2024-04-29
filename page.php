@@ -17,7 +17,7 @@ Class Page{
     static function loginBtn(){
         echo '
         <form class="lgn-button" action=""  method="post">
-            <button role="button" name="login">Login</button>
+            <button role="button" name="btn-login">Login</button>
         </form>'
         ;
     }
@@ -44,7 +44,7 @@ Class Page{
                 <input type="text" id="input1" name="input1" value=""><br>
                 <label for="jelszo">Jelszó</label>
                 <input type="text" id="input2" name="input2" value=""><br>
-                <button type="submit" name="btn-login">Bejelentkezés</button>
+                <button type="submit" name="btn-login-conf">Bejelentkezés</button>
                 <button type="submit" name="btn-reg">Regisztráció</button>
                 <a href="pass.php">Elfelejtett jelszó</a>
             </form>
@@ -55,11 +55,13 @@ Class Page{
         <style type="text/css">.lgn-button  { display: none; }</style>
         <form class="reg-menu" action="" method="post">
             <label for="name">Név</label>
-            <input type="text" id="input1" name="input1" value=""><br>
+            <input type="text" id="reg-name" name="reg-name" value=""><br>
             <label for="email">E-mail</label>
-            <input type="text" id="input2" name="input2" value=""><br>
+            <input type="text" id="reg-email" name="reg-email" value=""><br>
             <label for="jelszo">Jelszó</label>
-            <input type="text" id="input3" name="input3" value=""><br>
+            <input type="text" id="reg-pass" name="reg-pass" value=""><br>
+            <label for="jelszo">Jelszó újra</label>
+            <input type="text" id="reg-pass2" name="reg-pass2" value=""><br>
             <button type="submit" name="btn-reg-conf">Regisztráció</button>
         </form>
     ';
