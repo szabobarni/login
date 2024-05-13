@@ -82,7 +82,7 @@ Class Tools{
        
             $mail->isHTML(true);                                
             $mail->Subject = 'Regisztracio befejezese';
-            $mail->Body    = 'A regisztráció véglegesítésének érdekében kattintson <a href="http://localhost:8000/login/login.php?'.$token.'" target="_blank">ide.</a>';
+            $mail->Body    = 'A regisztráció véglegesítésének érdekében kattintson <a href="http://localhost:8000/login/login.php?variable1='.$email.'&['.$token.']" target="_blank">ide.</a>';
        
             $mail->send();
             //echo 'Message has been sent';
@@ -98,7 +98,17 @@ Class Tools{
         $dbname = "login";
         $conn = new mysqli($servername, $username, $password,$dbname);
 
-        $query = "UPDATE Users SET is_active='1', registered_at='' WHERE email = '$email';";
+        $query = "UPDATE Users SET is_active='1', registered_at='$regtime' WHERE email = '$email';";
         $conn->query($query);
+    }
+    static function login($email){
+        $servername = "localhost";
+        $username = "root";
+        $password = null;
+        $dbname = "login";
+        $conn = new mysqli($servername, $username, $password,$dbname);
+
+        $query = "SELECT password FROM users WHERE email = '$email'";
+        return $conn->query($query)->fetch_assoc();
     }
 }

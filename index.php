@@ -27,4 +27,14 @@ if(isset($_POST['btn-reg-conf'])){
         Tools::sendEmail($name, $email, $pass,$token,$create_date,$token_valid);
     }
 }
+if(isset($_POST['btn-login-conf'])){
+    $email = $_POST['input1'];
+    $pass = $_POST['input2'];
+    $pass2 = tools::login($email);
+    if ($pass == $pass2['password']) {
+        page::loginSuccess();
+    } else {
+        page::loginFail();
+    }
+}
 Page::footer();

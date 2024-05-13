@@ -8,6 +8,7 @@ Class Page{
             <title>Login</title>
         
             <!-- Scripts -->
+            <script src="script.js"></script>
             <!-- Fonts -->
             <!-- Styles -->
             <link rel="stylesheet" href="style.css">
@@ -65,5 +66,17 @@ Class Page{
             <button type="submit" name="btn-reg-conf">Regisztráció</button>
         </form>
     ';
+    }
+    static function loginSuccess(){
+        echo '<div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display="none";">&times;</span>
+        Sikeres bejelentkezés!
+      </div>';
+    }
+    static function loginFail(){
+        echo '<div class="alert2">
+        <span class="closebtn" onclick="this.parentElement.style.display="none";">&times;</span>
+        Sikeres bejelentkezés!
+      </div>';
     }
 }
