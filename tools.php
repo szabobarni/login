@@ -98,7 +98,7 @@ Class Tools{
         $dbname = "login";
         $conn = new mysqli($servername, $username, $password,$dbname);
 
-        $query = "UPDATE Users SET is_active='1', registered_at='$regtime' WHERE email = '$email';";
+        $query = "UPDATE Users SET is_active='1',token='',token_valid_until='', registered_at='$regtime' WHERE email = '$email';";
         $conn->query($query);
     }
     static function login($email){
