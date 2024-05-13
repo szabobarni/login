@@ -1,1 +1,1 @@
-SZAR LEHET XD
+nem funkcional meg
