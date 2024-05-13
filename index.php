@@ -34,6 +34,8 @@ if(isset($_POST['btn-login-conf'])){
     $pass2 = tools::login($email);
     if (password_verify($pass, $pass2['password'])) {
         page::loginSuccess();
+        session_start();
+        $_SESSION['email'] = $email;
     } else {
         page::loginFail();
     }
