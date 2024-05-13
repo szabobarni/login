@@ -30,7 +30,7 @@ Class Tools{
             is_active tinyint default false,
             name varchar(50) not null,
             email varchar(25) not null unique,
-            password varchar(50) not null,
+            password varchar(200) not null,
             token varchar(100),
             token_valid_until datetime,
             created_at datetime default now(),
@@ -82,7 +82,7 @@ Class Tools{
        
             $mail->isHTML(true);                                
             $mail->Subject = 'Regisztracio befejezese';
-            $mail->Body    = 'A regisztráció véglegesítésének érdekében kattintson <a href="http://localhost:8000/login/login.php?variable1='.$email.'&['.$token.']" target="_blank">ide.</a>';
+            $mail->Body    = 'A regisztráció véglegesítésének érdekében kattintson <a href="http://localhost:8000/login/login.php?t='.$token.'" target="_blank">ide.</a>';
        
             $mail->send();
             //echo 'Message has been sent';
@@ -91,14 +91,14 @@ Class Tools{
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     }
-    static function regComplete($email,$regtime){
+    static function regComplete($token,$regtime){
         $servername = "localhost";
         $username = "root";
         $password = null;
         $dbname = "login";
         $conn = new mysqli($servername, $username, $password,$dbname);
 
-        $query = "UPDATE Users SET is_active='1',token='',token_valid_until='', registered_at='$regtime' WHERE email = '$email';";
+        $query = "UPDATE Users SET is_active='1',token='',token_valid_until='', registered_at='$regtime' WHERE token = '$token';";
         $conn->query($query);
     }
     static function login($email){
